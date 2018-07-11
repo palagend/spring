@@ -34,10 +34,10 @@ spring:
     logstash:
         destination: ${LOGSTASH_DESTINATION:elk.service-governance:5044}
     rabbitmq:
-        host: ${SPRING_RABBITMQ_HOST:rabbitmq.mail}
-        port: ${SPRING_RABBITMQ_PORT:15672}
-        username: ${SPRING_RABBITMQ_USERNAME:guest}
-        password: ${SPRING_RABBITMQ_PASSWORD:guest}
+        host: ${SPRING_RABBITMQ_HOST:rabbitmq.rabbitmq}
+        port: ${SPRING_RABBITMQ_PORT:5672}
+        username: ${SPRING_RABBITMQ_USERNAME:founder}
+        password: ${SPRING_RABBITMQ_PASSWORD:Founder123}
         publisher-confirms: true
         virtual-host: /
     datasource:
