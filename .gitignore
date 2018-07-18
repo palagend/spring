@@ -1,0 +1,9 @@
+.gradle/
+.idea/
+build/
+out/
+classes/
+target/
+my.log*
+/dummy.json
+*.iml

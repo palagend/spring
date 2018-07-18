@@ -1,0 +1,17 @@
+version: "3"
+services:
+    ids-file-server:
+        image: hub.fzyun.io/founder/ids-file-server:${ids_tag:-latest}
+        #build: .
+        container_name: ids-file-server
+        environment:
+            - IDS_SET_EXTERNAL_CONFIG=1
+            - IDS_DOCKER_HOST=ids-test.fzyun.io
+            - IDS_DOCKER_PORT=10100
+        volumes:
+            - ./data:/var/lib/ids-file-server/data
+            - ./config:/opt/ids/config
+            - /etc/timezone:/etc/timezone:ro
+            - /etc/localtime:/etc/localtime:ro
+        ports:
+            - 10100:8080

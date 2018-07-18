@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.founder.ids.service</groupId>
+        <artifactId>ids-service</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ids-service-user</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.founder.ids.service</groupId>
+            <artifactId>ids-service-core</artifactId>
+            <version>${ids-service-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.founder.ids.service</groupId>
+            <artifactId>ids-service-api</artifactId>
+            <version>${ids-service-version}</version>
+        </dependency>
+        <dependency><!-- rabbitmq -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency><!-- google开源json处理 -->
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>build-push-docker</id>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>1.0.0</version>
+                        <executions>
+                            <!-- 生成第一个镜像并push -->
+                            <execution>
+                                <id>build-image</id>
+                                <!-- 执行阶段 -->
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- 自动push镜像 -->
+                                    <pushImage>true</pushImage>
+                                    <serverId>founder-docker-hub</serverId>
+                                    <registryUrl>http://${registry}/</registryUrl>
+                                    <!-- 第一个docker文件目录 -->
+                                    <dockerDirectory>${project.basedir}/docker</dockerDirectory>
+                                    <!-- 镜像 -->
+                                    <imageName>${registry}/founder/${project.artifactId}:${docker_tag}</imageName>
+                                    <!-- <imageTags>
+                                        <imageTag>${docker_tag}</imageTag>
+                                        <imageTag>latest</imageTag> 
+                                    </imageTags> -->
+                                    <!-- 所需资源 -->
+                                    <resources>
+                                        <resource>
+                                            <targetPath>/</targetPath>
+                                            <directory>${project.build.directory}</directory>
+                                            <include>${project.build.finalName}.jar</include>
+                                        </resource>
+                                    </resources>
+                                    <!-- 执行目录 -->
+                                    <buildDirectory>${project.build.directory}</buildDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

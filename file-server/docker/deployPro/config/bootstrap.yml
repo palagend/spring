@@ -1,0 +1,52 @@
+server:
+    port: 8080
+    root-path: http://api.fzyun.io/ids-file-server/
+    file-mapping-path: /file/
+    file-save-path: /var/lib/ids-file-server/data
+
+spring:
+    application:
+        name: ids-file-server
+    http:
+        multipart:
+            enabled: true
+            max-file-size: 2048MB
+            max-request-size: 2048MB
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+    logstash:
+        destination: kibana.fzyun.io:4569
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://registry.fzyun.io/eureka/
+        healthcheck:
+            enabled: true
+    instance:
+        lease-expiration-duration-in-seconds: 9
+        lease-renewal-interval-in-seconds: 3
+        prefer-ip-address: true
+        ip-address: ${spring.cloud.client.ipAddress}
+        instance-id: ${eureka.instance.ip-address}:${server.port}:${spring.application.name}
+
+
+#开启异常中心
+exception:
+    center:
+        open: true
+
+
+#服务保护配置
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        #调用服务超时时间， 毫秒
+                        timeoutInMilliseconds: 300000
+ribbon:
+    ReadTimeout: 300000
+    ConnectTimeout: 300000

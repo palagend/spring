@@ -1,0 +1,13 @@
+server:
+    root-path: http://api-test.fzyun.io/ids-file-server/
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://registry-test.fzyun.io/eureka/
+    instance:
+            ip-address: ${ids-file-server.host}
+            non-secure-port: ${ids-file-server.port}
+spring:
+    logstash:
+        #logstash地址
+        destination: kibana-test.fzyun.io:4569

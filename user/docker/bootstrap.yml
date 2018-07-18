@@ -1,0 +1,76 @@
+ids:
+    service:
+        user:
+            port: ${IDS_SERVICE_USER_PORT}
+            host: ${IDS_SERVICE_USER_HOST}
+    home:
+        url: ${IDS_HOME_URL}
+    keycloak:
+        serverUrl: ${IDS_KEYCLOAK_SERVERURL}
+        admin:
+            username: ${IDS_KEYCLOAK_ADMIN_USERNAME}
+            password: ${IDS_KEYCLOAK_ADMIN_PASSWORD}
+        company: ${IDS_KEYCLOAK_COMPANY}
+kb:
+    home:
+        url: ${KB_HOME_URL}
+server:
+    port: ${SERVER_PORT}
+eureka:
+    client:
+        healthcheck:
+            enabled: true
+        serviceUrl:
+            defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
+    instance:
+        lease-expiration-duration-in-seconds: 9
+        lease-renewal-interval-in-seconds: 3
+        prefer-ip-address: true
+        ip-address: ${spring.cloud.client.ipAddress}
+        instance-id: ${eureka.instance.ip-address}:${server.port}:${spring.application.name}
+spring:
+    application:
+        name: ${SPRING_APPLICATION_NAME}
+    logstash:
+        destination: ${SPRING_LOGSTASH_DESTINATION}
+    rabbitmq:
+        host: ${SPRING_RABBITMQ_HOST}
+        port: ${SPRING_RABBITMQ_PORT}
+        username: ${SPRING_RABBITMQ_USERNAME}
+        password: ${SPRING_RABBITMQ_PASSWORD}
+        publisher-confirms: true
+        virtual-host: /
+    datasource:
+        url2: jdbc:mysql://mysql1.fzyun.io:3306/ids_dev?useUnicode=true&characterEncoding=UTF8
+        username2: ids_dev
+        password2: ids_dev
+        name: ${spring.application.name}
+        url: ${SPRING_DATASOURCE_URL}
+        username: ${SPRING_DATASOURCE_USERNAME}
+        password: ${SPRING_DATASOURCE_PASSWORD}
+        driver-class-name: com.mysql.jdbc.Driver
+        initialSize: 5
+        minIdle: 5
+        maxActive: 10
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+        filters: stat
+        manager:
+            url: /druid/*
+            username: druid
+            password: 123456
+exception:
+    center:
+        open: true
+auth.check.open: true
+redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    check: ${REDIS_CHECK}

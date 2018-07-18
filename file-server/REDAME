@@ -1,0 +1,21 @@
+文件服务器
+
+必须配置的有：
+
+1、server.root-path
+访问此项目的根路径，如http://local:8080，如果通过网关访问别忘了加服务名
+如“http://api-local.fzyun.io/support-file-server”
+
+2、server.file-save-path
+文件的存储路径如 “/home/founder/data”，不存在会自动创建
+
+3、server.file-mapping-path
+跟存储路径做映射，如配置成“/file/”，浏览器访问http://local:8080/file/a.png
+他就回去“server.file-save-path”配置的存储路径里找“a.png”这个图片，然后显示处理
+
+返回：
+originalFilename 原文件名
+newFileName 新文件名
+bytesSize 文件大小
+url 文件URL
+

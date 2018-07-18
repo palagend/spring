@@ -1,0 +1,73 @@
+server:
+    port: ${SERVER_PORT:8080}
+    #本工程访问地址，如果通过网关访问别忘了加服务名
+    root-path: ${SERVER_ROOTPATH:http://api-local.fzyun.io/ids-file-server/}
+    #文件映射路径
+    file-mapping-path: /file/
+    #文件存储路径
+    file-save-path: /var/lib/ids-file-server/data
+spring:
+    application:
+        name: ids-file-server
+    http:
+        #上传文件控制
+        multipart:
+            enabled: true
+            max-file-size: 2048MB
+            max-request-size: 2048MB
+
+    #日期格式
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+
+    #日志收集集成ELK
+    logstash:
+        #logstash地址
+        destination: ${SPRING_LOGSTASH_DESTINATION:kibana-local.fzyun.io:4569}
+
+#服务治理
+eureka:
+    #客户端
+    client:
+        #健康检查
+        healthcheck:
+            #是否开启健康检查
+            enabled: true
+        #注册中心地址
+        serviceUrl:
+            #默认地址
+            defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://registry-local.fzyun.io/eureka/}
+    #实例配置
+    instance:
+        #发呆时间，即服务续约到期时间（缺省为90s）
+        #Eureka服务器在接收到实例 的最后一次发出的心跳后，需要等待多久才可以将此实例删除
+        lease-expiration-duration-in-seconds: 9
+        #表示eureka client发送心跳给server端的频率,默认为30 秒
+        #如果在lease-expiration-duration-in-seconds后，server端没有收到client的心跳，则将摘除该instance
+        #除此之外，如果该instance实现了HealthCheckCallback，并决定让自己unavailable的话，则该instance也不会接收到流量
+        lease-renewal-interval-in-seconds: 3
+        #指定用ip访问而不是用主机名
+        prefer-ip-address: true
+        #指定真实的ip地址
+        ip-address: ${spring.cloud.client.ipAddress}
+        #指定在注册中心Status列显示的信息
+        instance-id: ${eureka.instance.ip-address}:${server.port}:${spring.application.name}
+
+#开启异常中心
+exception:
+    center:
+        open: true
+
+#服务保护配置
+hystrix:  
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        #调用服务超时时间， 毫秒
+                        timeoutInMilliseconds: 300000
+ribbon:
+    ReadTimeout: 300000
+    ConnectTimeout: 300000

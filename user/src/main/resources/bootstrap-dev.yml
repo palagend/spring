@@ -1,0 +1,37 @@
+ids:
+    keycloak:
+        serverUrl: https://ids-test.fzyun.io/auth
+        admin:
+            username: admin
+            password: admin
+        company: DEBUG
+    home:
+        url: http://localhost:8089
+auth.check.open: false
+spring:
+    logstash:
+        destination: kibana-dev.fzyun.io:4569
+    datasource:
+        url: jdbc:mysql://ids-test.fzyun.io:3306/dev?useUnicode=true&characterEncoding=UTF8
+        username: root
+        password: 12345678
+        driver-class-name: com.mysql.jdbc.Driver
+        url2: jdbc:mysql://mysql1.fzyun.io:3306/ids_dev?useUnicode=true&characterEncoding=UTF8
+        username2: ids_dev
+        password2: ids_dev
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                show_sql: true
+                use_sql_comments: true
+                format_sql: true
+logging:
+    level:
+        hibernate: DEBUG
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://registry-dev.fzyun.io/eureka/
+
