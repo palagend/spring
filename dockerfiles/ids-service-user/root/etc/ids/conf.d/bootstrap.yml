@@ -1,12 +1,8 @@
 ids:
-    service:
-        user:
-            port: ${IDS_SERVICE_USER_PORT:8880}
-            host: ${IDS_SERVICE_USER_HOST:ids.fzyun.io}
     home:
         url: ${IDS_HOME_URL:http://ids-admin.fzyun.io}
     keycloak:
-        serverUrl: ${IDS_KEYCLOAK_SERVERURL:http://ids.fzyun.io/auth}
+        serverUrl: ${IDS_KEYCLOAK_SERVERURL:http://kc.kc:8080/auth}
         admin:
             username: ${IDS_KEYCLOAK_ADMIN_USERNAME:admin}
             password: ${IDS_KEYCLOAK_ADMIN_PASSWORD:admin}
