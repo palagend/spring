@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine3.7
+FROM founder/openjdk:8-jre-slim
 
 COPY ids-user-federation.jar /opt/app.jar
 COPY root /

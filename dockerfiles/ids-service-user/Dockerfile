@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine3.7
+FROM founder/openjdk:8-jre-slim
 
 ADD ./server.cer $JAVA_HOME/jre/lib/security/server.cer
 RUN  keytool -import -alias server -keystore $JAVA_HOME/jre/lib/security/cacerts -file $JAVA_HOME/jre/lib/security/server.cer -storepass changeit -noprompt
