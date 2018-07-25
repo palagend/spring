@@ -80,6 +80,16 @@
             <url>http://fzkb.founder.com.cn/nexus/content/groups/public/</url>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>plugins-milestone</name>
+          <url>https://repo.spring.io/plugins-milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>

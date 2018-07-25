@@ -39,6 +39,27 @@
             <artifactId>gson</artifactId>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>founder maven repository</name>
+            <url>http://fzkb.founder.com.cn/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+	    <pluginRepository>
+		    <id>central</id>
+		    <name>CentralRepository</name>
+		    <url>http://fzkb.founder.com.cn/nexus/content/groups/public/</url>
+		    <layout>default</layout>
+		    <snapshots>
+			    <enabled>false</enabled>
+		    </snapshots>
+		    <releases>
+			    <updatePolicy>never</updatePolicy>
+		    </releases>
+	    </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
