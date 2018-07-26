@@ -21,6 +21,7 @@
         <module>core</module>
         <module>api</module>
         <module>federation</module>
+        <module>file-server</module>
     </modules>
     <dependencies>
         <dependency><!-- JSON工具包 -->
