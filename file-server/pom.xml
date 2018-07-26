@@ -31,19 +31,38 @@
 
     <repositories>
         <repository>
-            <id>central</id>
-            <name>founder maven repository</name>
+            <id>fzyun-snapshot</id>
+            <name>Artifactory OSS Repository Snapshot</name>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <url>http://repo.stage.fzyun.io/artifactory/fzyun-snapshot/</url>
+        </repository>
+        <repository>
+            <id>fzyun-release</id>
+            <name>Artifactory OSS Repository Release</name>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>http://repo.stage.fzyun.io/artifactory/fzyun-release/</url>
+        </repository>
+        <repository>
+            <id>nexus</id>
+            <name>Founder Repository</name>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
             <url>http://fzkb.founder.com.cn/nexus/content/groups/public/</url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>plugins-milestone</name>
-          <url>https://repo.spring.io/plugins-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>plugins-milestone</name>
+            <url>https://repo.spring.io/plugins-milestone</url>
         </pluginRepository>
     </pluginRepositories>
     <build>

@@ -53,34 +53,52 @@
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
         </dependency>
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-test</artifactId>-->
-        <!--<version>1.5.9.RELEASE</version>-->
-        <!--<scope>test</scope>-->
-        <!--</dependency>-->
     </dependencies>
     <repositories>
         <repository>
+            <id>fzyun-snapshot</id>
+            <name>Artifactory OSS Repository Snapshot</name>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <url>http://repo.stage.fzyun.io/artifactory/fzyun-snapshot/</url>
+        </repository>
+        <repository>
             <id>nexus</id>
             <name>Founder Repository</name>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
             <url>http://fzkb.founder.com.cn/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>fzyun-release</id>
+            <name>Artifactory OSS Repository Release</name>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>http://repo.stage.fzyun.io/artifactory/fzyun-release/</url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>plugins-milestone</name>
-          <url>https://repo.spring.io/plugins-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>fzyun-central</id>
+            <name>fzyun-plugins-release</name>
+            <url>http://repo.stage.fzyun.io/artifactory/fzyun-release</url>
+        </pluginRepository>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>plugins-release</name>
+            <url>http://repo.spring.io/plugins-release</url>
         </pluginRepository>
     </pluginRepositories>
-
     <build>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

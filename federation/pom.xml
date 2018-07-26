@@ -78,16 +78,19 @@
             <id>central</id>
             <name>founder maven repository</name>
             <url>http://fzkb.founder.com.cn/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>plugins-milestone</name>
-          <url>https://repo.spring.io/plugins-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>plugins-milestone</name>
+            <url>https://repo.spring.io/plugins-release</url>
         </pluginRepository>
     </pluginRepositories>
 
