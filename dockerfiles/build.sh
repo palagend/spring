@@ -14,7 +14,7 @@ projects=( "${projects[@]%/}" )
 
 for project in "${projects[@]}"; do
     cd "$project"
-    image="founder/$project:dev${BUILD_NUMBER}"
+    image="founder/$project:$TAG"
     docker build -t "$image" .
     docker tag "$image" "$REGISTRY/$image"
     docker push "$REGISTRY/$image"
