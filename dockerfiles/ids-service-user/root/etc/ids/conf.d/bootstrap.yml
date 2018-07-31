@@ -2,7 +2,7 @@ ids:
     home:
         url: ${IDS_HOME_URL:http://ids-admin.fzyun.io}
     keycloak:
-        serverUrl: ${IDS_KEYCLOAK_SERVERURL:http://kc.kc:8080/auth}
+        serverUrl: ${IDS_KEYCLOAK_SERVERURL:http://kc.kc.dev.fzyun.io/auth}
         admin:
             username: ${IDS_KEYCLOAK_ADMIN_USERNAME:admin}
             password: ${IDS_KEYCLOAK_ADMIN_PASSWORD:admin}
