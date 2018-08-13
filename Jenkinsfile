@@ -5,8 +5,8 @@ node("${NODE_DEFINED}"){
         }
         stage("Start"){
             sh'''
-                sudo apt-get update
-                sudo apt-get install -y --no-install-recommends maven
+                apt-get update
+                apt-get install -y --no-install-recommends maven
                 mvn clean package
             '''
         }
