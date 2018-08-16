@@ -3,6 +3,7 @@ node("${NODE_DEFINED}"){
         stage("Checkout"){
             git branch: "develop",credentialsId: "${CREDENTIAL_ID}", url: 'http://git.fzyun.io/ids/ids-service.git'
         }
+        //编译微服务代码
         stage("Start"){
             sh'''
                 apt-get update
@@ -10,6 +11,7 @@ node("${NODE_DEFINED}"){
                 mvn clean package
             '''
         }
+        //生成并推送 Dokcer 镜像
         stage("Build Docker"){
             sh'''
                 export TAG=${PAAS_ENV}-build-${BUILD_NUMBER}
@@ -20,9 +22,11 @@ node("${NODE_DEFINED}"){
                 cd dockerfiles && ./build.sh
             '''
         }
+        //获取部署代码
         stage("Checkout Deploy"){
              git branch: 'develop', credentialsId: "${CREDENTIAL_ID}", url: 'http://git.fzyun.io/ids/ids-paas-deploy.git'
         }
+        //部署至云平台
         stage("Deploy"){
             sh'''
                 export VOLUME_DRIVER=rancher-nfs MYSQL_ROOT_PASSWORD=Founder123
