@@ -3,7 +3,8 @@ ids:
         admin:
             username: admin
             password: admin
-        serverUrl: http://kc.kc/auth
+        #serverUrl: http://kc.kc/auth
+        serverUrl: ${IDS_KEYCLOAK_SERVERURL:http://kc.kc.dev.fzyun.io/auth}
         company: FounderID
         federation:
             defaultValue: "{\"pagination\":[\"false\"],
