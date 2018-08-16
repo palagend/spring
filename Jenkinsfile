@@ -27,6 +27,7 @@ node("${NODE_DEFINED}"){
             sh'''
                 export VOLUME_DRIVER=rancher-nfs MYSQL_ROOT_PASSWORD=Founder123
                 export TAG1=${PAAS_ENV}-build-$BUILD_NUMBER TAG2=${PAAS_ENV}-build-${BUILD_NUMBER} TAG3=${PAAS_ENV}-build-${BUILD_NUMBER}
+                export IDS_KEYCLOAK_SERVERURL=${IDS_KEYCLOAK_SERVERURL:="http://kc.kc.fzyun.io/auth"}
                 rancher-compose -p 'ids-backbone' -f ids-backbone/0/docker-compose.yml up -d -p --force-recreate --confirm-upgrade
             '''
         }
