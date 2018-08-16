@@ -1,5 +1,6 @@
 node("${NODE_DEFINED}"){
     timestamps{
+        cleanWs()
         stage("Checkout"){
             git branch: "develop",credentialsId: "${CREDENTIAL_ID}", url: 'http://git.fzyun.io/ids/ids-service.git'
         }
