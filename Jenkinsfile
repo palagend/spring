@@ -2,7 +2,7 @@ node("${NODE_DEFINED}"){
     timestamps{
         cleanWs()
         stage("Checkout"){
-            git branch: "develop",credentialsId: "${CREDENTIAL_ID}", url: 'http://git.fzyun.io/ids/ids-service.git'
+            git branch: "${BRANCH}",credentialsId: "${CREDENTIAL_ID}", url: 'http://git.fzyun.io/ids/ids-service.git'
         }
         //编译微服务代码
         stage("Start"){
@@ -25,7 +25,7 @@ node("${NODE_DEFINED}"){
         }
         //获取部署代码
         stage("Checkout Deploy"){
-             git branch: 'develop', credentialsId: "${CREDENTIAL_ID}", url: 'http://git.fzyun.io/ids/ids-paas-deploy.git'
+             git branch: "${BRANCH}", credentialsId: "${CREDENTIAL_ID}", url: 'http://git.fzyun.io/ids/ids-paas-deploy.git'
         }
         //部署至云平台
         stage("Deploy"){
