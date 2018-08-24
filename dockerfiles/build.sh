@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-REGISTRY="${REGISTRY:-hub.fzyun.io:5000}"
+REGISTRY="${REGISTRY:-push.fzyun.io}"
 
 set -e
 

@@ -103,5 +103,5 @@ redis:
     host: ${REDIS_HOST:redis}
     port: ${REDIS_PORT:6379}
     check: ${REDIS_CHECK:true}
-service-invocation:
-    root-url: http://gateway.service-governance/${spring.application.name}
+#service-invocation:
+#    root-url: http://gateway.service-governance/${spring.application.name}
