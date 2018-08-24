@@ -37,23 +37,23 @@
         </encoder>
     </appender>
     <!-- 输出到logstash的Appender -->
-    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>${logstashDestination}</destination>
-        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
-            <customFields>{"serviceId":"${springAppName}"}</customFields>
-        </encoder>
-    </appender>
-    <appender name="logstash-ids" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-           <destination>172.19.57.63:4561</destination>
-           <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
-               <customFields>{"serviceId":"${springAppName}"}</customFields>
-           </encoder>
-    </appender>
+    <!--<appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+        <!--<destination>${logstashDestination}</destination>-->
+        <!--<encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">-->
+            <!--<customFields>{"serviceId":"${springAppName}"}</customFields>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+    <!--<appender name="logstash-ids" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+           <!--<destination>172.19.57.63:4561</destination>-->
+           <!--<encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">-->
+               <!--<customFields>{"serviceId":"${springAppName}"}</customFields>-->
+           <!--</encoder>-->
+    <!--</appender>-->
     <!-- 日志输出级别 -->
     <root level="INFO">
         <appender-ref ref="FILE"/>
-        <appender-ref ref="logstash"/>
-        <appender-ref ref="logstash-ids"/>
+        <!--<appender-ref ref="logstash"/>-->
+        <!--<appender-ref ref="logstash-ids"/>-->
         <appender-ref ref="console"/>
     </root>
 </configuration>  
