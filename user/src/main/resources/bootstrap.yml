@@ -46,15 +46,11 @@ eureka:
         ip-address: ${spring.cloud.client.ipAddress}
         #指定在注册中心Status列显示的信息
         instance-id: ${eureka.instance.ip-address}:${server.port}:${spring.application.name}
-
 spring:
     application:
         #应用名称，对用注册中心的serviceId
         name: ids-service-user
     #跟踪日志集成ELK
-    logstash:
-        #logstash地址
-        destination: kibana.fzyun.io
     rabbitmq:
         host: 172.19.58.205    #测试地址
         port: 5672

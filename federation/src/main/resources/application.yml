@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: ids-user-federation
+  logstash:
+    destination: ${LOGSTASH_DESTINATION:elk.service-governance:5044}
