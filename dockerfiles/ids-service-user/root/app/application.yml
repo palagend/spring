@@ -27,8 +27,6 @@ eureka:
 spring:
     application:
         name: ids-service-user
-    logstash:
-        destination: ${LOGSTASH_DESTINATION:elk.service-governance:5044}
     rabbitmq:
         host: ${SPRING_RABBITMQ_HOST:rabbitmq.rabbitmq}
         port: ${SPRING_RABBITMQ_PORT:5672}

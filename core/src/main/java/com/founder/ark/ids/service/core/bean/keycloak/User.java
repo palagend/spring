@@ -22,7 +22,7 @@ public class User {
     @NotEmpty(message = ConstantsLibrary.Message.USERNAME_NULL)
     @Pattern(regexp = "^[a-zA-Z0-9@._-]{1,50}$", message = ConstantsLibrary.Message.USERNAME_ILLEGAL)
     String username;
-    @Pattern(regexp = "(^((\\+86)|(86))?1(3|5|7|8)\\d{9}$)|(^$)", message = ConstantsLibrary.Message.MOBILE_ILLEGAL)
+    @Pattern(regexp = "(^((\\+86)|(86))?1[34578]\\d{9}$)|(^$)", message = ConstantsLibrary.Message.MOBILE_ILLEGAL)
     String mobilePhone;
     String company;
     @Email(message = ConstantsLibrary.Message.EMAIL_ILLEGAL, regexp = EMAIL_REGEX)
