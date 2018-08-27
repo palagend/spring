@@ -7,6 +7,7 @@ import com.founder.ark.ids.admin.dao.UserDao;
 import com.founder.ark.ids.bean.ConstantsLibrary;
 import com.founder.ark.ids.bean.keycloak.User;
 import com.founder.ark.ids.util.NotCheckToken;
+import io.swagger.annotations.Api;
 import org.keycloak.admin.client.Keycloak;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import java.util.concurrent.TimeoutException;
  */
 @RestController
 @RequestMapping(value = "/kc/token")
+@Api(tags = "Token API")
 public class TokenManager {
 
     @Value("${ids.keycloak.company:_UNKNOWN}")

@@ -8,6 +8,7 @@ import com.founder.ark.ids.bean.ConstantsLibrary;
 import com.founder.ark.ids.bean.keycloak.User;
 import com.founder.ark.ids.service.SessionService;
 import com.founder.ark.ids.service.UserService;
+import io.swagger.annotations.Api;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.representations.idm.UserSessionRepresentation;
 import org.slf4j.Logger;
@@ -26,6 +27,7 @@ import java.util.List;
 @RestController(value = "kcSessionController")
 @RequestMapping("/kc/admin")
 @Validated
+@Api(tags = "IDS管理系统API")
 public class SessionController {
     @Autowired
     SessionService sessionService;
@@ -96,7 +98,7 @@ public class SessionController {
             temporaryUsers = OnlineUsers.onlineUsers;
         }
         //根据pageNumber和pageSize的值设置PageData中应该返回给前台的的数据
-        Integer first = pageSize * ( pageNumber - 1 );
+        Integer first = pageSize * (pageNumber - 1);
         Integer last = pageNumber * pageSize - 1;
 
         //设置分页后数据的页码、页数及数据总数
@@ -126,7 +128,7 @@ public class SessionController {
     @GetMapping(value = "sessions/{userId}/sessions")
     public ResponseObject getUserSessions(@PathVariable String userId) {
         try {
-            List<UserSessionRepresentation> userSessionRepresentations =  sessionService.getUserSessions(userId);
+            List<UserSessionRepresentation> userSessionRepresentations = sessionService.getUserSessions(userId);
             return ResponseObject.newSuccessResponseObject(userSessionRepresentations, ConstantsLibrary.Message.SUCCESS);
         } catch (Exception e) {
             logger.error("getUserSessions Exception", e);

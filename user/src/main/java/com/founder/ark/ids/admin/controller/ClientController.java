@@ -7,6 +7,7 @@ import com.founder.ark.ids.bean.keycloak.Client;
 import com.founder.ark.ids.bean.keycloak.Group;
 import com.founder.ark.ids.service.ClientService;
 import com.founder.ark.ids.util.PollResult;
+import io.swagger.annotations.Api;
 import org.hibernate.validator.constraints.Length;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("kc/admin")
+@Api(tags = "IDS管理系统API")
 public class ClientController {
     @Autowired
     private ClientService service;

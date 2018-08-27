@@ -36,7 +36,7 @@ import static javax.servlet.http.HttpServletResponse.*;
 @RestController(value = "kcUserController")
 @RequestMapping("/kc/admin")
 @Validated
-@Api(tags = "Admin用户管理API")
+@Api(tags = "IDS管理系统API")
 public class UserController {
     @Autowired
     UserService service;

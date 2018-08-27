@@ -8,6 +8,7 @@ import com.founder.ark.ids.bean.keycloak.Client;
 import com.founder.ark.ids.bean.keycloak.Group;
 import com.founder.ark.ids.service.GroupService;
 import com.founder.ark.ids.util.PollResult;
+import io.swagger.annotations.Api;
 import org.keycloak.representations.idm.GroupRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.slf4j.Logger;
@@ -25,6 +26,7 @@ import java.util.Optional;
 
 @RestController(value = "kcGroupController")
 @RequestMapping("/kc/admin")
+@Api(tags = {"IDS管理系统API"})
 public class GroupController {
 
     @Autowired

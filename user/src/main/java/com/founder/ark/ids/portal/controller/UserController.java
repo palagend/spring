@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/kc/portal")
-@Api(tags = {"Portal用户管理API"})
+@Api(tags = {"IDS门户系统API"})
 public class UserController {
     @Autowired
     UserService userService;
