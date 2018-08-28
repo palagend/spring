@@ -3,6 +3,7 @@ package com.founder.ark.ids;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import redis.clients.jedis.JedisPool;
 
@@ -11,6 +12,7 @@ import java.util.Properties;
 //@EnableFeignClients//声明式接口调用
 //@SpringCloudApplication
 @SpringBootApplication
+@EnableDiscoveryClient
 public class UserApplication {
     @Value("${redis.host}")
     private String redisHost;
