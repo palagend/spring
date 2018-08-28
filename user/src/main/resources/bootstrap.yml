@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      enabled: true
+  application:
+    name: ids-service-user
