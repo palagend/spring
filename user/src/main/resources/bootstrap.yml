@@ -2,10 +2,4 @@ spring:
   cloud:
     config:
       enabled: true
-  application:
-    name: ids-service-user
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+      uri: ${CONFIG_SERVER_URI:http://localhost:8888}

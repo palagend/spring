@@ -33,9 +33,9 @@ import java.util.concurrent.TimeoutException;
 public class UserServiceImpl implements UserService {
     private final Keycloak keycloak;
     private static final String IDS_VIEW_PROFILE = "ids-view-profile";
-    @Value("${ids.keycloak.company:_UNKNOWN}")
+    @Value("${avatar.keycloak.realm}")
     private String company;
-    @Value("${ids.keycloak.serverUrl}")
+    @Value("${avatar.keycloak.serverUrl}")
     private String serverUrl;
     @Autowired
     UserDao userDao;

@@ -48,7 +48,7 @@ import static javax.servlet.http.HttpServletResponse.SC_CREATED;
 public class UserServiceImpl implements UserService {
     @Autowired
     private Keycloak keycloak;
-    @Value("${ids.keycloak.company:_UNKNOWN}")
+    @Value("${avatar.keycloak.realm}")
     private String company;
     @Autowired
     private UserDao dao;

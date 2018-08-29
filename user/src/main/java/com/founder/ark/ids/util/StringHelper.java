@@ -1,6 +1,6 @@
 package com.founder.ark.ids.util;
 
-import org.apache.commons.lang.RandomStringUtils;
+import org.keycloak.common.util.RandomString;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +30,7 @@ public class StringHelper {
      */
     public static final String genPassword(int len) {
         while (true) {
-            String pwd = RandomStringUtils.randomAlphanumeric(len);
+            String pwd = RandomString.randomCode(len);
             if (pwd.matches(PASSWORD_REGEX)) {
                 return pwd;
             }
