@@ -4,3 +4,8 @@ spring:
       enabled: true
   application:
     name: ids-service-user
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
