@@ -11,7 +11,9 @@ import java.util.Properties;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class UserApplication {
+public class Athena {
+    public static final int MAX_RESULTS = 1000;
+    public static final String ROUTING_KEY = "mailQueue";
     @Value("${redis.host}")
     private String redisHost;
     @Value("${redis.port}")
@@ -19,7 +21,7 @@ public class UserApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(Athena.class, args);
     }
 
     @Bean
