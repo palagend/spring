@@ -30,8 +30,6 @@
     </properties>
 
     <dependencies>
-
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
@@ -41,6 +39,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <!-- TODO: spring-cloud-starter-netflix-eureka-client 与 resteasy 有冲突 （待解决）-->
         <!--2-->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
@@ -72,7 +71,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>compileOnly</scope>
         </dependency>
         <!--6-->
         <dependency>
@@ -101,7 +99,6 @@
             <scope>test</scope>
         </dependency>
         <!--11-->
-
         <dependency>
             <groupId>com.founder.ark</groupId>
             <artifactId>common-utils</artifactId>
@@ -111,20 +108,20 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>1.4.0</version>
-        </dependency><!--DEPRECATED-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.1.31</version>
-        </dependency><!--DEPRECATED-->
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.196</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.31</version>
         </dependency>
         <!--12-->
         <dependency>
