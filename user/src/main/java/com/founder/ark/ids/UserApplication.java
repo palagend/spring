@@ -9,8 +9,6 @@ import redis.clients.jedis.JedisPool;
 
 import java.util.Properties;
 
-//@EnableFeignClients//声明式接口调用
-//@SpringCloudApplication
 @SpringBootApplication
 @EnableDiscoveryClient
 public class UserApplication {
@@ -20,11 +18,6 @@ public class UserApplication {
     private String redisPort;
 
 
-    /**
-     * 启动
-     *
-     * @param args
-     */
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);
     }
