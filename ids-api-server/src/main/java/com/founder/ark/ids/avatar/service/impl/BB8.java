@@ -59,7 +59,7 @@ public class BB8 implements KeycloakFacade, Mailer {
             log.debug("[CREATING USER]: response message is ({})", resp.getStatusInfo());
         }
         if (resp.getStatus() == HttpServletResponse.SC_CREATED) {
-            Object[] args = {password};
+            Object[] args = {user.getUsername(), password};
             MailBean bean = new MailBean(user.getEmail()
                     , messageSource.getMessage("avatar.mail.createUser.subject"
                     , null, LocaleContextHolder.getLocale())
