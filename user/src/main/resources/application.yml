@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: ids-service-user
-server:
-  port: 8880

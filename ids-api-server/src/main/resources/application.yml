@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: ids-api-server
+server:
+  port: 8880

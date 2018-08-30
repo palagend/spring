@@ -1,59 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>com.founder.ark</groupId>
-        <artifactId>common-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.founder.ids.service</groupId>
-    <artifactId>ids-service</artifactId>
+    <groupId>com.founder.ark.ids</groupId>
+    <artifactId>ids-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>ids-service</name>
+    <name>ids-parent</name>
     <packaging>pom</packaging>
-    <properties>
-        <ids-service-version>${project.version}</ids-service-version>
-    </properties>
+    <description>IDS项目集</description>
+    <developers>
+        <developer>
+            <name>Grain Stark</name>
+            <email>palagend@icloud.com</email>
+        </developer>
+    </developers>
     <modules>
-        <module>user</module>
-        <module>core</module>
-        <module>api</module>
-        <module>federation</module>
-        <module>file-server</module>
+        <module>ids-file-server</module>
+        <module>ids-api-server</module>
+        <module>configserver</module>
     </modules>
-    <dependencies>
-        <dependency><!-- JSON工具包 -->
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.1.31</version>
-        </dependency>
-        <dependency><!-- 数据库操作公共依赖 -->
-            <groupId>com.founder.ark</groupId>
-            <artifactId>common-jdbc</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency><!-- spring cloud 公共依赖 -->
-            <groupId>com.founder.ark</groupId>
-            <artifactId>common-cloud</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency><!-- 统一身份认证 公共依赖 -->
-            <groupId>com.founder.ark</groupId>
-            <artifactId>common-auth</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency><!-- 异常中心 -->
-            <groupId>com.founder.ark</groupId>
-            <artifactId>common-exception</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency><!-- 将日志信息输出到logstash，ELK -->
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-        </dependency>
-    </dependencies>
     <repositories>
         <repository>
             <id>nexus</id>
@@ -63,43 +28,10 @@
             </snapshots>
             <url>http://fzkb.founder.com.cn/nexus/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>alirepo</id>
+            <name>Aliyun Repository</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
     </repositories>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin-version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${encoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-        <pluginManagement>
-            <plugins>
-                <!-- spring-boot的插件 -->
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>1.5.9.RELEASE</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.springframework</groupId>
-                            <artifactId>springloaded</artifactId>
-                            <version>1.2.6.RELEASE</version>
-                        </dependency>
-                    </dependencies>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>
