@@ -1,5 +1,5 @@
 spring:
   application:
-    name: ids-service-user
+    name: ids-api-server
 server:
   port: 8880
