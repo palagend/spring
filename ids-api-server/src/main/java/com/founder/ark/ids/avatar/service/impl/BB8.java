@@ -9,9 +9,9 @@ import com.founder.ark.ids.avatar.representations.UserWrapper;
 import com.founder.ark.ids.avatar.service.KeycloakFacade;
 import com.founder.ark.ids.avatar.service.Mailer;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.RandomStringUtils;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.UserResource;
-import org.keycloak.common.util.RandomString;
 import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.GroupRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
@@ -52,7 +52,7 @@ public class BB8 implements KeycloakFacade, Mailer {
 
     @Override
     public Response createOrUpdate(UserWrapper user) {
-        String password = RandomString.randomCode(8);
+        String password = RandomStringUtils.randomAlphanumeric(8);
         user.setPassword(password);
         Response resp = keycloak.realm(realm).users().create(user.unwrap());
         if (log.isDebugEnabled()) {
@@ -148,7 +148,7 @@ public class BB8 implements KeycloakFacade, Mailer {
         CredentialRepresentation cre = new CredentialRepresentation();
         cre.setTemporary(true);
         cre.setType(CredentialRepresentation.PASSWORD);
-        String password = RandomString.randomCode(8);
+        String password = RandomStringUtils.randomAlphanumeric(8);
         cre.setValue(password);
         UserResource userResource = keycloak.realm(realm).users().get(id);
         userResource.resetPassword(cre);
