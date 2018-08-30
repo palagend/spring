@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.support.PagedListHolder;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
@@ -39,6 +40,7 @@ import java.util.List;
  */
 @Slf4j
 @Component
+@RefreshScope
 public class BB8 implements KeycloakFacade, Mailer {
     @Autowired
     private RabbitTemplate rabbitTemplate;//需要在配置文件中增加RabbitMQ的信息
@@ -105,6 +107,9 @@ public class BB8 implements KeycloakFacade, Mailer {
 
     @Override
     public PagedListHolder<UserRepresentation> list(String queryString) {
+        if (log.isDebugEnabled()) {
+            log.debug("当前keycloak示例操作的域（realm）是：{}", realm);
+        }
         List<UserRepresentation> lst = keycloak.realm(realm).users().search(queryString, 0, Athena.MAX_RESULTS);
         PagedListHolder page = new PagedListHolder();
         page.setSource(lst);

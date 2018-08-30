@@ -27,6 +27,9 @@ public class KeycloakConfig {
     @RefreshScope
     @Bean
     public Keycloak keycloak() {
+        if (log.isDebugEnabled()) {
+            log.debug("Keycloak[ServerURL:{},realm:{},client:{}]", serverUrl, realm, client);
+        }
         return KeycloakBuilder.builder()
                 .serverUrl(serverUrl)
                 .realm(realm)
