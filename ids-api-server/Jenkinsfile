@@ -1,0 +1,16 @@
+node {
+
+    stage('Preparation') {
+        git branch: 'avatar', credentialsId: 'c7357aaf-5eee-48b5-9053-3670b433aa63', url: 'http://git.fzyun.io/ids/ids-service'
+   }
+
+    stage('Build'){
+        sh 'mvn install -Pjenkins -DskipTests'
+    }
+
+    stage('PaaS') {
+            echo 'TODO: PaaS'
+            //sh 'rancher-compose -p avatar -f compose/docker-compose.yml -r compose/rancher-compose.yml up -d -p -c --force-recreate'
+       }
+
+}
