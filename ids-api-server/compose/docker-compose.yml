@@ -1,0 +1,12 @@
+version: '2'
+services:
+  apiserver:
+    image: hub.fzyun.io/founder/ids-api-server:0.0.2-SNAPSHOT
+    environment:
+      CONFIG_SERVER_URI: http://config.athena.dev.fzyun.io
+      EUREKA_HOSTNAME: apiserver.avatar #用来指定eureka client所在的hostname，便于gateway查找
+      SPRING_PROFILES_ACTIVE: dev
+    labels:
+      traefik.port: '8880'
+      traefik.enable: 'true'
+      io.rancher.container.pull_image: always
